@@ -1,2 +1,2 @@
-# Alt-n-Nab-z-Uygulamas-
+# Altin Nabiz Uygulamasi
 Antigravity ile geliştirilmiş mobil uygulama 
