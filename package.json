@@ -1,0 +1,15 @@
+{
+  "name": "stitch-add-transaction",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "test": "npx playwright test",
+    "test:headed": "npx playwright test --headed",
+    "test:trace": "npx playwright test --trace=on",
+    "prepare:playwright": "npx playwright install",
+    "ci-test": "npx playwright install && npx playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.42.0"
+  }
+}

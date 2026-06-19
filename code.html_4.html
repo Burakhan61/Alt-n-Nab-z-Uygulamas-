@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Altın Takibi - Fiyat Alarmları</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#cdab3c",
+                        "background-light": "#f8f7f6",
+                        "background-dark": "#0a0c10", // Deep navy adjustment for gold contrast
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .gold-gradient {
+            background: linear-gradient(135deg, #cdab3c 0%, #947a2a 100%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+    .tgl {
+      cursor: pointer;
+    }
+    .tgl-s {
+      background: rgba(255,255,255,0.8);
+      transition: transform 0.25s ease, background-color 0.25s ease;
+    }
+    .tgl input:checked + .tgl-s {
+      background: #cdab3c;
+    }
+  </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Header Section -->
+<header class="sticky top-0 z-50 glass px-6 py-6 flex items-center justify-between">
+<a href="../index.html" class="flex items-center justify-center size-10 rounded-full hover:bg-white/10 transition-colors" aria-label="Geri Dön">
+<span class="material-symbols-outlined text-slate-100">arrow_back</span>
+</a>
+<h1 class="text-xl font-bold tracking-tight text-slate-100">Fiyat Alarmları</h1>
+<button type="button" class="flex items-center justify-center size-10 rounded-full hover:bg-white/10 transition-colors" aria-label="Daha Fazla">
+<span class="material-symbols-outlined text-slate-100">more_vert</span>
+</button>
+</header>
+<main class="flex-1 px-6 pb-32">
+<!-- Market Overview Card -->
+<div class="mt-6 gold-gradient p-8 rounded-xl shadow-2xl shadow-primary/10 relative overflow-hidden">
+<div class="relative z-10">
+<div class="flex items-center gap-2 opacity-90 mb-1">
+<span class="material-symbols-outlined text-sm">payments</span>
+<p class="text-sm font-medium uppercase tracking-widest">CANLI SPOT FİYAT</p>
+</div>
+<div class="flex items-baseline gap-3">
+<h2 class="text-4xl font-bold tracking-tighter text-white">₺2.342,80</h2>
+<span class="text-sm font-bold bg-white/20 px-2 py-0.5 rounded text-white">+1.24%</span>
+</div>
+</div>
+<!-- Abstract pattern overlay -->
+<div class="absolute top-0 right-0 w-32 h-32 opacity-10 -mr-8 -mt-8">
+<span class="material-symbols-outlined text-[120px]">auto_graph</span>
+</div>
+</div>
+<!-- Action Button -->
+<div class="mt-8 flex justify-between items-center">
+<h3 class="text-lg font-semibold text-slate-100">Bildirimleriniz</h3>
+<button type="button" class="flex items-center gap-2 bg-primary hover:bg-primary/90 text-background-dark px-4 py-2 rounded-full font-bold transition-all transform active:scale-95" aria-label="Yeni Alarm Ekle">
+<span class="material-symbols-outlined text-[20px]">add_circle</span>
+<span>Yeni Alarm</span>
+</button>
+</div>
+<!-- Alerts List -->
+<div class="mt-6 space-y-4">
+<!-- Alert Card 1 -->
+<div class="glass p-5 rounded-xl flex items-center justify-between border-l-4 border-primary">
+<div class="flex items-center gap-4">
+<div class="bg-primary/20 p-3 rounded-lg">
+<span class="material-symbols-outlined text-primary">trending_up</span>
+</div>
+<div>
+<p class="text-slate-100 font-bold text-lg">Üstünde ₺2.400,00</p>
+<p class="text-slate-400 text-sm">Altın zirveye ulaştığında bildir</p>
+</div>
+</div>
+<div>
+<label class="relative flex h-[28px] w-[48px] items-center rounded-full bg-slate-700 p-1 transition-colors">
+<input checked="" class="sr-only peer" type="checkbox" id="alert-up-price" data-alert-id="alert-up-price" />
+<div class="h-5 w-5 rounded-full bg-white shadow-md transform transition-transform peer-checked:translate-x-5"></div>
+</label>
+</div>
+</div>
+<!-- Alert Card 2 -->
+<div class="glass p-5 rounded-xl flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="bg-slate-800 p-3 rounded-lg">
+<span class="material-symbols-outlined text-slate-400">trending_down</span>
+</div>
+<div>
+<p class="text-slate-100 font-bold text-lg">Altında ₺2.250,00</p>
+<p class="text-slate-400 text-sm">Alım sinyali bildirimi</p>
+</div>
+</div>
+<div>
+<label class="relative flex h-[28px] w-[48px] items-center rounded-full bg-slate-700 p-1 transition-colors">
+<input checked="" class="sr-only peer" type="checkbox" id="alert-down-price" data-alert-id="alert-down-price" />
+<div class="h-5 w-5 rounded-full bg-white shadow-md transform transition-transform peer-checked:translate-x-5"></div>
+</label>
+</div>
+</div>
+<!-- Alert Card 3 (Inactive) -->
+<div class="glass p-5 rounded-xl flex items-center justify-between opacity-60">
+<div class="flex items-center gap-4">
+<div class="bg-slate-800 p-3 rounded-lg">
+<span class="material-symbols-outlined text-slate-400">show_chart</span>
+</div>
+<div>
+<p class="text-slate-100 font-bold text-lg">%5 Günlük Değişim</p>
+<p class="text-slate-400 text-sm">Volatilite takipçisi</p>
+</div>
+</div>
+<div>
+<label class="relative flex h-[28px] w-[48px] items-center rounded-full bg-slate-700 p-1 transition-colors">
+<input class="sr-only peer" type="checkbox" id="alert-volatility" data-alert-id="alert-volatility" />
+<div class="h-5 w-5 rounded-full bg-white shadow-md transform transition-transform peer-checked:translate-x-0"></div>
+</label>
+</div>
+</div>
+<!-- Alert Card 4 -->
+<div class="glass p-5 rounded-xl flex items-center justify-between border-l-4 border-primary">
+<div class="flex items-center gap-4">
+<div class="bg-primary/20 p-3 rounded-lg">
+<span class="material-symbols-outlined text-primary">alarm</span>
+</div>
+<div>
+<p class="text-slate-100 font-bold text-lg">Piyasa Açılış Alarmı</p>
+<p class="text-slate-400 text-sm">Her gün 08:00 EST'de</p>
+</div>
+</div>
+<div>
+<label class="relative flex h-[28px] w-[48px] items-center rounded-full bg-slate-700 p-1 transition-colors">
+<input checked="" class="sr-only peer" type="checkbox" id="alert-market-open" data-alert-id="alert-market-open" />
+<div class="h-5 w-5 rounded-full bg-white shadow-md transform transition-transform peer-checked:translate-x-5"></div>
+</label>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation -->
+<nav class="fixed bottom-0 left-0 right-0 z-50 glass border-t border-white/10 px-4 pb-8 pt-4 flex justify-around">
+<a class="flex flex-col items-center gap-1 text-slate-500" href="../index.html" aria-label="Ana Sayfa">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-[10px] font-bold uppercase tracking-wider">ANA SAYFA</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-primary" href="./code.html" aria-label="Alarmlar">
+<span class="material-symbols-outlined">notifications_active</span>
+<span class="text-[10px] font-bold uppercase tracking-wider">ALARMLAR</span>
+</a>
+<div class="relative -top-10">
+<a href="../i_lem_ekle_t_rk_e/code.html" class="gold-gradient size-14 rounded-full shadow-lg shadow-primary/30 border-4 border-background-dark flex items-center justify-center text-background-dark" aria-label="İşlem Ekle">
+<span class="material-symbols-outlined font-bold">account_balance_wallet</span>
+</a>
+</div>
+<a class="flex flex-col items-center gap-1 text-slate-500" href="../portfolio_summary/code.html" aria-label="Portföy">
+<span class="material-symbols-outlined">analytics</span>
+<span class="text-[10px] font-bold uppercase tracking-wider">TRENDLER</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-500" href="../gold_dashboard/code.html" aria-label="Profil">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-bold uppercase tracking-wider">PROFİL</span>
+</a>
+</nav>
+</div>
+<script>
+(function(){
+  const storageKey = 'stitch_price_alerts_state';
+  const noticeInputs = Array.from(document.querySelectorAll('.al-list input[type="checkbox"]'));
+
+  function loadState() {
+    try {
+      return JSON.parse(localStorage.getItem(storageKey) || '{}');
+    } catch (err) {
+      console.warn('Alert state parse failed', err);
+      return {};
+    }
+  }
+
+  function saveState(state) {
+    localStorage.setItem(storageKey, JSON.stringify(state));
+  }
+
+  const storedState = loadState();
+
+  noticeInputs.forEach((input, index) => {
+    const stateKey = input.dataset.alertId || `alert-${index}`;
+    input.id = input.id || stateKey;
+    if (storedState[stateKey] !== undefined) {
+      input.checked = storedState[stateKey];
+    }
+    input.setAttribute('role', 'switch');
+    input.setAttribute('aria-checked', input.checked);
+    const wrapper = input.closest('.al-it');
+    if (wrapper) {
+      wrapper.classList.toggle('on', input.checked);
+      wrapper.style.opacity = input.checked ? '1' : '0.45';
+    }
+
+    input.addEventListener('change', () => {
+      const current = loadState();
+      current[stateKey] = input.checked;
+      saveState(current);
+      input.setAttribute('aria-checked', input.checked);
+      if (wrapper) {
+        wrapper.classList.toggle('on', input.checked);
+        wrapper.style.opacity = input.checked ? '1' : '0.45';
+      }
+    });
+  });
+})();
+</script>
+</body></html>

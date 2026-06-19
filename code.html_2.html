@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>İşlem Ekle</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#cdab3c",
+                        "background-light": "#f8f7f6",
+                        "background-dark": "#0a0c14",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .gold-gradient {
+            background: linear-gradient(135deg, #cdab3c 0%, #b38f2d 100%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen flex flex-col items-center justify-center p-4">
+<div class="w-full max-w-md bg-slate-900/40 dark:bg-slate-900/60 glass-panel rounded-xl overflow-hidden shadow-2xl border border-primary/10">
+<div class="flex items-center justify-between p-6">
+<a href="../index.html" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/5 transition-colors" aria-label="Geri Dön">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</a>
+<h1 class="text-xl font-semibold tracking-tight">İşlem Ekle</h1>
+<button type="button" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/5 transition-colors" aria-label="Daha Fazla">
+<span class="material-symbols-outlined text-primary">more_vert</span>
+</button>
+</div>
+<div class="px-6 py-4 flex flex-col items-center">
+<div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4 border border-primary/20">
+<span class="material-symbols-outlined text-primary text-3xl">payments</span>
+</div>
+<p class="text-sm text-slate-400 uppercase tracking-widest font-medium">YENİ YATIRIM</p>
+</div>
+<form id="transactionForm" class="px-6 pb-8 space-y-6" novalidate>
+<div class="space-y-2">
+<label class="text-sm font-medium text-slate-300 ml-1" for="goldType">Altın Türü</label>
+<div class="relative group">
+<select id="goldType" name="goldType" class="w-full bg-slate-800/50 border border-slate-700/50 rounded-xl px-4 py-4 appearance-none focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none transition-all text-slate-100">
+<option value="gram">Gram (g)</option>
+<option value="ounce">Ounces (oz)</option>
+<option value="tola">Tola</option>
+<option value="kg">Kilograms (kg)</option>
+</select>
+<div class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
+<span class="material-symbols-outlined text-primary">expand_more</span>
+</div>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-sm font-medium text-slate-300 ml-1" for="goldAmount">Miktar</label>
+<div class="relative">
+<input id="goldAmount" name="goldAmount" aria-describedby="amountError" class="w-full bg-slate-800/50 border border-slate-700/50 rounded-xl px-4 py-4 focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none transition-all text-slate-100 placeholder:text-slate-600" placeholder="0.00" step="0.01" type="number" inputmode="decimal" min="0.01" />
+<div class="absolute right-4 top-1/2 -translate-y-1/2">
+<span class="material-symbols-outlined text-primary">scale</span>
+</div>
+</div>
+<p id="amountError" class="text-rose-400 text-xs min-h-[1.25rem] hidden"></p>
+</div>
+<div class="space-y-2">
+<label class="text-sm font-medium text-slate-300 ml-1" for="goldPrice">Alış Fiyatı (TL)</label>
+<div class="relative">
+<input id="goldPrice" name="goldPrice" aria-describedby="priceError" class="w-full bg-slate-800/50 border border-slate-700/50 rounded-xl px-4 py-4 focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none transition-all text-slate-100 placeholder:text-slate-600" placeholder="0.00" step="0.01" type="number" inputmode="decimal" min="0.01" />
+<div class="absolute right-4 top-1/2 -translate-y-1/2">
+<span class="material-symbols-outlined text-primary">universal_currency_alt</span>
+</div>
+</div>
+<p id="priceError" class="text-rose-400 text-xs min-h-[1.25rem] hidden"></p>
+</div>
+<div class="min-h-[1.25rem]"><p id="formFeedback" class="text-sm text-rose-400"></p></div>
+<div class="pt-4">
+<button class="w-full gold-gradient text-slate-900 font-bold py-5 rounded-xl shadow-lg shadow-primary/20 hover:shadow-primary/40 active:scale-[0.98] transition-all flex items-center justify-center gap-2" type="submit"><span class="material-symbols-outlined font-bold">check_circle</span> Satın Alımı Onayla</button>
+</div>
+</form>
+<div class="px-6 py-6 border-t border-slate-800/50 bg-slate-900/30">
+<div class="flex items-center justify-between text-xs text-slate-500">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">info</span>
+<span>Canlı Piyasa Oranı: ₺2,042.40/oz</span>
+</div>
+<span class="text-primary font-medium underline cursor-pointer">Trendleri Görüntüle</span>
+</div>
+</div>
+</div>
+<div class="mt-8 text-center space-y-2">
+<p class="text-slate-500 text-sm">Güvenli ve şifreli altın kasası depolama mevcuttur</p>
+<div class="flex justify-center gap-4 opacity-40">
+<span class="material-symbols-outlined">verified_user</span>
+<span class="material-symbols-outlined">lock</span>
+<span class="material-symbols-outlined">account_balance</span>
+</div>
+</div>
+<script>
+(function(){
+  const transactionForm = document.getElementById('transactionForm');
+  const goldType = document.getElementById('goldType');
+  const goldAmount = document.getElementById('goldAmount');
+  const goldPrice = document.getElementById('goldPrice');
+  const amountError = document.getElementById('amountError');
+  const priceError = document.getElementById('priceError');
+  const formFeedback = document.getElementById('formFeedback');
+
+  function setError(element, message) {
+    if (!element) return;
+    element.textContent = message;
+    element.classList.remove('hidden');
+  }
+
+  function resetErrors() {
+    [amountError, priceError].forEach(el => {
+      if (!el) return;
+      el.textContent = '';
+      el.classList.add('hidden');
+    });
+    if (formFeedback) {
+      formFeedback.textContent = '';
+      formFeedback.classList.remove('text-emerald-500');
+      formFeedback.classList.add('text-rose-400');
+    }
+  }
+
+  function validateValue(element, label) {
+    const value = element.value.trim();
+    if (!value) return `${label} alanı boş bırakılamaz.`;
+    const normalized = value.replace(',', '.');
+    const number = Number(normalized);
+    if (Number.isNaN(number)) return `${label} geçerli bir sayı olmalıdır.`;
+    if (number <= 0) return `${label} 0'dan büyük olmalıdır.`;
+    return '';
+  }
+
+  function loadSavedValues() {
+    try {
+      const saved = JSON.parse(localStorage.getItem('stitch_transaction') || '{}');
+      if (saved.type) goldType.value = saved.type;
+      if (saved.amount) goldAmount.value = saved.amount;
+      if (saved.price) goldPrice.value = saved.price;
+    } catch (err) {
+      console.warn('Saved transaction parse error', err);
+    }
+  }
+
+  function saveTransaction(transaction) {
+    localStorage.setItem('stitch_transaction', JSON.stringify(transaction));
+  }
+
+  transactionForm.addEventListener('submit', function(event) {
+    event.preventDefault();
+    resetErrors();
+
+    let hasError = false;
+    const amountMessage = validateValue(goldAmount, 'Miktar');
+    const priceMessage = validateValue(goldPrice, 'Alış Fiyatı');
+
+    if (amountMessage) {
+      setError(amountError, amountMessage);
+      hasError = true;
+    }
+    if (priceMessage) {
+      setError(priceError, priceMessage);
+      hasError = true;
+    }
+    if (!goldType.value) {
+      if (formFeedback) {
+        formFeedback.textContent = 'Lütfen bir altın türü seçin.';
+      }
+      hasError = true;
+    }
+
+    if (hasError) {
+      return;
+    }
+
+    const transaction = {
+      type: goldType.value,
+      amount: Number(goldAmount.value.replace(',', '.')).toFixed(2),
+      price: Number(goldPrice.value.replace(',', '.')).toFixed(2),
+      savedAt: new Date().toLocaleString('tr-TR')
+    };
+
+    saveTransaction(transaction);
+    if (formFeedback) {
+      formFeedback.textContent = 'İşleminiz kaydedildi ve portföyünüze eklendi.';
+      formFeedback.classList.remove('text-rose-400');
+      formFeedback.classList.add('text-emerald-500');
+    }
+    transactionForm.reset();
+    goldType.value = 'gram';
+  });
+
+  window.addEventListener('DOMContentLoaded', loadSavedValues);
+})();
+</script>
+<nav class="fixed bottom-0 left-0 right-0 z-50 glass border-t border-white/10 px-4 pb-8 pt-4 flex justify-around">
+  <a class="flex flex-col items-center gap-1 text-slate-500" href="../index.html" aria-label="Ana Sayfa">
+    <span class="material-symbols-outlined">dashboard</span>
+    <span class="text-[10px] font-bold uppercase tracking-wider">ANASAYFA</span>
+  </a>
+  <a class="flex flex-col items-center gap-1 text-slate-500" href="../price_alerts/code.html" aria-label="Piyasa Alarmı">
+    <span class="material-symbols-outlined">notifications_active</span>
+    <span class="text-[10px] font-bold uppercase tracking-wider">ALARMLAR</span>
+  </a>
+  <div class="relative -top-10">
+    <a href="../i_lem_ekle_t_rk_e/code.html" class="gold-gradient size-14 rounded-full shadow-lg shadow-primary/30 border-4 border-background-dark flex items-center justify-center text-background-dark" aria-label="İşlem Ekle">
+      <span class="material-symbols-outlined font-bold">account_balance_wallet</span>
+    </a>
+  </div>
+  <a class="flex flex-col items-center gap-1 text-slate-500" href="../portfolio_summary/code.html" aria-label="Portföy">
+    <span class="material-symbols-outlined">analytics</span>
+    <span class="text-[10px] font-bold uppercase tracking-wider">PORTFÖY</span>
+  </a>
+  <a class="flex flex-col items-center gap-1 text-slate-500" href="../gold_dashboard/code.html" aria-label="Profil">
+    <span class="material-symbols-outlined">person</span>
+    <span class="text-[10px] font-bold uppercase tracking-wider">PROFİL</span>
+  </a>
+</nav>
+</body></html>
