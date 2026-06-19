@@ -2,71 +2,109 @@
 
 > Gerçek zamanlı altın portföy takibi, işlem yönetimi ve fiyat alarmları sunan premium bir fintech web uygulaması.
 
+**Öğrenci:** Burakhan Yavuz | **No:** 24010509112
+
 ---
 
-## 👤 Öğrenci Bilgileri
+## 📌 1. Proje Özeti
 
-| Alan | Bilgi |
+### Uygulamanın Amacı
+
+**Altın Nabız**, bireysel yatırımcıların altın varlıklarını tek bir ekrandan kolayca takip edebildiği, alım-satım işlemi girebildiği ve fiyat alarmı oluşturabildiği bir **frontend web uygulamasıdır**.
+
+### Hedef Kullanıcı Kitlesi
+
+- Altın yatırımı yapan bireysel kullanıcılar
+- Portföyünü dijital ortamda takip etmek isteyen tasarruf sahipleri
+- Mobil/web uyumlu sade bir finans arayüzü arayan kişiler
+
+### Çözmek İstediği Problem
+
+Geleneksel altın takip yöntemleri (kâğıt, Excel, banka uygulamaları) kullanıcıya anlık görselleştirme ve alarm imkânı sunmamaktadır. Bu uygulama;
+- Portföy değerini anlık olarak gösterme
+- İşlem geçmişini yerel olarak saklama
+- Fiyat alarmlarını kalıcı hâle getirme
+
+sorunlarını çözmek için geliştirilmiştir.
+
+---
+
+## 🤖 2. Kullanılan AI Araçları
+
+| Kategori | Kullanılan Araç |
 |---|---|
-| **Ad Soyad** | Burakhan Yavuz |
-| **Öğrenci No** | 24010509112 |
+| **UI Tasarımı** | Gemini (Google AI Studio) |
+| **Kod Üretimi** | Claude (Anthropic) / Kiro AI |
+| **Prototipleme** | Stitch (Google AI Studio) |
+| **İçerik & Metin** | ChatGPT (OpenAI) |
+| **Test Senaryoları** | Claude / Kiro AI |
 
 ---
 
-## 📌 Proje Hakkında
+## 📝 3. Prompt Kütüphanesi
 
-**Altın Nabız**, kullanıcıların altın varlıklarını kolayca takip edebildiği, alım-satım işlemi ekleyebildiği ve fiyat alarmı ayarlayabildiği bir **frontend web uygulamasıdır**.
+Proje sürecinde kullanılan en başarılı prompt örnekleri aşağıda paylaşılmıştır.
 
-Sinematik bir fintech tasarım anlayışıyla hazırlanmış olup karanlık tema (dark mode), 3D dalga simülasyonu, glassmorphism arayüz bileşenleri ve yerel veri kalıcılığı (localStorage) içermektedir. Playwright ile yazılmış otomatik uçtan uca (e2e) testler de projeye dahildir.
-
----
-
-## 🛠️ Kullanılan Teknolojiler
-
-| Teknoloji | Kullanım Amacı |
-|---|---|
-| HTML5 | Sayfa yapısı |
-| CSS3 (custom properties, glassmorphism) | Arayüz tasarımı |
-| Tailwind CSS (CDN) | Yardımcı CSS sınıfları |
-| JavaScript (Vanilla) | Form doğrulama, localStorage, etkileşim |
-| Google Fonts — Inter | Tipografi |
-| Google Material Symbols | İkon seti |
-| Playwright `^1.42.0` | Otomatik e2e test altyapısı |
-| Node.js / npm | Bağımlılık yönetimi |
-
----
-
-## 📁 Proje Klasör Yapısı
+### 3.1 UI Üretim Promptları
 
 ```
-Alt-n-Nab-z-Uygulamas-/
-│
-├── index.html              # Ana giriş sayfası — Altın Portföy Paneli
-├── kod.html_1.html         # Altın Takip Paneli
-├── kod.html_2.html         # İşlem Ekle sayfası
-├── kod.html_3.html         # Portföy Özeti sayfası
-├── kod.html_4.html         # Fiyat Alarmları sayfası
-│
-├── navigasyon.spec.ts      # Playwright e2e test dosyası
-├── oyun yazarı.config.ts   # Playwright yapılandırması
-├── paket.json              # npm bağımlılıkları ve scriptler
-│
-├── screen.png_1/
-│   └── screen.png          # Ana panel ekran görüntüsü
-├── screen.png_2/
-│   └── screen.png          # İşlem Ekle ekran görüntüsü
-├── screen.png_3/
-│   └── screen.png          # Portföy Özeti ekran görüntüsü
-├── screen.png_4/
-│   └── screen.png          # Fiyat Alarmları ekran görüntüsü
-│
-├── 24010509112.md          # Ödev dokümantasyon dosyası
-└── README.md               # Bu dosya
+"Design a premium dark-theme gold portfolio dashboard for a mobile web app.
+Use glassmorphism cards, gold (#cdab3c) as primary color, obsidian black
+background. Include bottom navigation with 5 tabs: Home, Add Transaction,
+Portfolio, Markets, Profile. Style should feel like a cinematic fintech app."
+```
+
+```
+"Create a price alerts page for a gold tracking app. Include toggle switches
+for high/low price alerts that persist via localStorage. Dark theme, gold
+accent color, Material Icons."
+```
+
+### 3.2 Kod Üretim Promptları
+
+```
+"Write a vanilla JavaScript form validation for a gold transaction form.
+Fields: goldAmount (number), goldPrice (number), goldType (select: gram/ons/cumhuriyet).
+Show inline error messages with ids #amountError and #priceError.
+On success show #formFeedback with 'İşleminiz kaydedildi' message.
+Save to localStorage."
+```
+
+```
+"Write Playwright e2e tests for a multi-page HTML app with file:// URLs.
+Test 1: navigation between pages via aria-label links.
+Test 2: form validation shows errors then saves on valid input.
+Test 3: localStorage toggle persists after page reload."
+```
+
+### 3.3 Veri Üretim Promptları
+
+```
+"Generate realistic mock data for a gold portfolio dashboard:
+5 sample transactions (date, type: alış/satış, gram amount, price per gram),
+current gold price in TRY, total portfolio value, profit/loss percentage."
+```
+
+### 3.4 İçerik Üretim Promptları
+
+```
+"Write Turkish UI copy for a gold investment app:
+- Navigation labels for: Portföy, İşlem Ekle, Piyasalar, Profil
+- Form placeholders for amount and price fields
+- Success and error messages for form submission
+- Price alert toggle labels"
 ```
 
 ---
 
-## ⚙️ Kurulum Adımları
+## ⚙️ 4. Kurulum ve Çalıştırma
+
+### Gereksinimler
+
+- Node.js (v18+)
+- npm
+
+### Adımlar
 
 ```bash
 # 1. Repoyu klonla
@@ -80,42 +118,58 @@ npm install
 npx playwright install
 ```
 
----
+### Uygulamayı Çalıştır
 
-## 🚀 Çalıştırma & Kullanım
-
-### Uygulamayı Aç
-
-`index.html` dosyasını doğrudan tarayıcıda aç **veya** bir statik sunucu kullan:
+`index.html` dosyasını doğrudan tarayıcıda aç **veya** statik sunucu kullan:
 
 ```bash
-# Python ile
+# Python ile yerel sunucu
 python -m http.server 8080
 # Tarayıcıda: http://localhost:8080
 ```
 
-### Sayfalar
+### Testleri Çalıştır
+
+```bash
+npm test                 # Headless mod (CI)
+npm run test:headed      # Tarayıcı görünür hâlde
+npm run test:trace       # Hata ayıklama iz kaydıyla
+```
+
+### Uygulama Sayfaları
 
 | Sayfa | Açıklama |
 |---|---|
-| 🏠 Ana Sayfa | Portföy paneli, 3D dalga simülasyonu |
-| ➕ İşlem Ekle | Altın alım/satım formu (doğrulama + kaydetme) |
+| 🏠 Ana Sayfa (`index.html`) | Portföy paneli, 3D dalga animasyonu |
+| ➕ İşlem Ekle | Alım/satım formu, doğrulama, localStorage kayıt |
 | 📊 Portföy | Portföy özeti ve grafik görünümü |
 | 🔔 Piyasalar | Fiyat alarmları (localStorage ile kalıcı) |
 | 👤 Profil | Altın takip gösterge paneli |
 
-### Testleri Çalıştır
+---
 
-```bash
-npm test              # Headless mod
-npm run test:headed   # Tarayıcı görünür hâlde
-npm run test:trace    # İz kaydıyla
-```
+## 🔭 5. Gelecek Vizyonu
 
-**Test kapsamı:**
-- ✅ Sayfalar arası navigasyonun doğru çalışması
-- ✅ İşlem formunun doğrulama mesajlarını göstermesi
-- ✅ Fiyat alarmı toggle'larının yeniden yüklemede kalıcı kalması
+### Geliştirilebilecek AI Özellikleri
+
+- **Yapay zekâ destekli fiyat tahmini:** Geçmiş altın fiyatı verisiyle eğitilmiş bir model (LSTM / Prophet) entegrasyonu ile "yarın altın fiyatı ne olur?" sorusuna olasılıksal yanıt üretilmesi
+- **Akıllı portföy optimizasyonu:** Kullanıcının risk profiline göre AI'ın alım/satım önerisi sunması
+- **Doğal dil sorgulama:** "Geçen ay ne kadar kazandım?" gibi serbest metin sorgularına yanıt veren LLM entegrasyonu
+- **Otomatik haber özeti:** Altın piyasasını etkileyen haberleri AI ile özetleyip alarm bildirimi olarak iletme
+
+### Çözülebilecek Kullanıcı Problemleri
+
+- Birden fazla altın türünü (gram, ons, cumhuriyet, ata, yarım) ayrı ayrı takip edememe
+- Yatırım kararlarını veriye dayalı değil sezgisel alma
+- Piyasa haberlerini takip etmek için farklı uygulamalar kullanma zorunda kalma
+
+### Ürünün Nasıl Ölçeklenebileceği
+
+- **Backend entegrasyonu:** Node.js / Supabase ile kullanıcı hesapları ve bulut tabanlı veri senkronizasyonu
+- **Mobil uygulama:** React Native veya Flutter ile iOS/Android'e taşıma
+- **Gerçek zamanlı veri:** WebSocket bağlantısıyla canlı altın kuru akışı
+- **Çoklu döviz desteği:** USD, EUR, GBP bazlı portföy görünümü
+- **API marketplace:** Diğer fintech uygulamalarının portföy verisine erişebilmesi için açık API
 
 ---
 
@@ -128,6 +182,39 @@ npm run test:trace    # İz kaydıyla
 | Portföy Özeti | Fiyat Alarmları |
 |---|---|
 | ![Portföy](screen.png_3/screen.png) | ![Alarmlar](screen.png_4/screen.png) |
+
+---
+
+## 📁 Proje Klasör Yapısı
+
+```
+Alt-n-Nab-z-Uygulamas-/
+├── index.html              # Ana sayfa — Portföy Paneli
+├── code.html_1.html        # Altın Takip Paneli
+├── code.html_2.html        # İşlem Ekle
+├── code.html_3.html        # Portföy Özeti
+├── code.html_4.html        # Fiyat Alarmları
+├── navigation.spec.ts      # Playwright e2e testleri
+├── playwright.config.ts    # Playwright yapılandırması
+├── package.json            # npm bağımlılıkları
+├── screen.png_1-4/         # Ekran görüntüleri
+├── 24010509112.md          # Ödev dokümantasyon dosyası
+└── README.md               # Bu dosya
+```
+
+---
+
+## 🛠️ Kullanılan Teknolojiler
+
+| Teknoloji | Kullanım Amacı |
+|---|---|
+| HTML5 / CSS3 | Sayfa yapısı ve tasarım |
+| Tailwind CSS (CDN) | Yardımcı CSS sınıfları |
+| JavaScript (Vanilla) | Form doğrulama, localStorage, etkileşim |
+| Google Fonts — Inter | Tipografi |
+| Google Material Symbols | İkon seti |
+| Playwright `^1.42.0` | Otomatik e2e test altyapısı |
+| Node.js / npm | Bağımlılık yönetimi |
 
 ---
 
@@ -145,3 +232,4 @@ npm run test:trace    # İz kaydıyla
 - [MDN — Form Validation](https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation)
 - [Google Fonts — Inter](https://fonts.google.com/specimen/Inter)
 - [Google Material Symbols](https://fonts.google.com/icons)
+- [Google AI Studio — Stitch](https://aistudio.google.com)
